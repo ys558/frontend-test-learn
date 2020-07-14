@@ -86,4 +86,4 @@ test('the shopping list has beer on it', () => {
 // exception
 const throwNewError = () => {throw new Error(`it's a new error`)}
 // tothrow()可写字符串或正则，检验和Error(`it's a new error`)里的信息是否一致
-test('toThrow', ()=> expect(throwNewError).toThrow('xx'))
+test('toThrow', ()=> expect(throwNewError).toThrow(`it's a new error`))
