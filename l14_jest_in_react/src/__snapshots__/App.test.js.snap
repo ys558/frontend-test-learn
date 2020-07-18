@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<App>
+  <div
+    className="app"
+    data-test="app-container"
+    title="123"
+  >
+    1234
+    <nav
+      className="header"
+    >
+      header
+    </nav>
+    <div
+      className="content"
+    >
+      <div
+        className="sidebar-left"
+      >
+        sidebar left
+      </div>
+      content
+    </div>
+    <footer
+      className="footer"
+    >
+      footer
+    </footer>
+  </div>
+</App>
+`;
+
+exports[`renders without crashing 2`] = `
+<div
+  className="app"
+  data-test="app-container"
+  title="123"
+>
+  1234
+  <nav
+    className="header"
+  >
+    header
+  </nav>
+  <div
+    className="content"
+  >
+    <div
+      className="sidebar-left"
+    >
+      sidebar left
+    </div>
+    content
+  </div>
+  <footer
+    className="footer"
+  >
+    footer
+  </footer>
+</div>
+`;
