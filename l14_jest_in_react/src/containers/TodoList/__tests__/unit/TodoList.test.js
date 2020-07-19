@@ -8,37 +8,40 @@ import { findTestWrapper } from '../../../../utils/testUtils'
 
 Enzyme.configure({ adapter: new Adapter() });
 
+describe('TodoList 组件', ()=>{
 let wrapper = null
 beforeEach(()=> wrapper =  shallow(<TodoList/>))
 
-test('TodoList 初始化列表为空', () => {
+test('初始化列表为空', () => {
   expect(wrapper.state('undoList')).toEqual([])
 });
 
-test('TodoList 应给Header传递一个增加 UndoList 内容的方法', ()=>{
+test('Header组件存在 addUndoItem 组件', ()=>{
   const Header = wrapper.find('Header')
   expect(Header.prop('addUndoItem')).toBeTruthy()
 })
 
 // 单元测试应该和Header分开, 不要耦合在一起: 
-test('当addUndoItem 被执行时, 即Header按回车时, TodoList应该新增一条记录', ()=>{
-  wrapper.instance().addUndoItem('test case 1')
+test('addUndoItem 被执行时, undoList应该新增一条记录', ()=>{
+  const {addUndoItem} = wrapper.instance()
+  const content = 'xxx'
+  addUndoItem(content)
   expect(wrapper.state('undoList').length).toBe(1)
-  expect(wrapper.state('undoList')[0]).toBe('test case 1')
-  wrapper.instance().addUndoItem('test case 1')
+  expect(wrapper.state('undoList')[0]).toBe(content)
+  addUndoItem(content)
   expect(wrapper.state('undoList').length).toBe(2)
 })
 
-test('给 UndoList 传递 undoList 数据, 以及 removeItem 方法', ()=>{
+test('UndoList 组件应该接收undoList 和 removeItem 两个参数', ()=>{
   const UndoList = wrapper.find('UndoList')
   expect(UndoList.prop('undoList')).toBeTruthy()
   expect(UndoList.prop('removeItem')).toBeTruthy()
 })
 
 test('当 removeItem 方法被执行时, undoList 应该删除内容', ()=>{
-  wrapper.setState({
-    undoList: ['item 1', 'item 2', 'item 3']
-  })
+  const mockData = ['item 1', 'item 2', 'item 3'] 
+  wrapper.setState({ undoList: mockData })
   wrapper.instance().removeItem(1)
-  expect(wrapper.state('undoList')).toEqual(['item 1','item 3'])
+  expect(wrapper.state('undoList')).toEqual([mockData[0], mockData[2]])
+})
 })
