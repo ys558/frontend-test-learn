@@ -7,8 +7,10 @@ import Header from '../../components/Header.jsx'
 
 Enzyme.configure({ adapter: new Adapter() });
 
+let wrapper = null
+beforeEach(()=> wrapper = shallow(<Header/>))
+
 test('Header 组件包含一个input框', () => {
-  const wrapper = shallow(<Header/>)
   const inputEl = wrapper.find("[data-test='input']")
   // expect(inputEl.length).toBe(1)
   // 或者用: jest-enzyme的方法:
@@ -16,13 +18,11 @@ test('Header 组件包含一个input框', () => {
 });
 
 test('Header 组件input 框内容, 初始化应该为空', ()=>{
-  const wrapper = shallow(<Header/>)
   const inputEl = wrapper.find("[data-test='input']")
   expect(inputEl.prop('value')).toEqual('')
 })
 
 test('Header 组件input 框内容, 当用户输入是，会跟随用户的输入而变化', ()=>{
-  const wrapper = shallow(<Header/>)
   const inputEl = wrapper.find("[data-test='input']")
   const userInput = 'test content'
   inputEl.simulate('change', { target: { value: userInput} })
