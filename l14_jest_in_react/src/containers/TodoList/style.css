@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  line-height: 60px;
+  background-color: #333;
+}
+
+.header-content {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  color: #fff;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.header-input {
+  /* 去除蓝色边框: */
+  outline: none;
+  width: 360px;
+  float: right;
+  margin-top: 15px;
+  line-height: 24px;
+  border-radius: 5px;
+  padding: 0 10px;
+}

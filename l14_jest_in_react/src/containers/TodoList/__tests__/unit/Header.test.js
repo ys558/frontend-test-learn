@@ -1,6 +1,5 @@
 import React from 'react';
 
-// 传统class组件, 采用Enzyme测试:
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Header from '../../components/Header.jsx'
@@ -10,10 +9,11 @@ Enzyme.configure({ adapter: new Adapter() });
 let wrapper = null
 beforeEach(()=> wrapper = shallow(<Header/>))
 
+// 快照测试, 用于保存组件样式等, 不再改动的东西:
+test('Header 样式正常, 无需改动', () =>expect(wrapper).toMatchSnapshot())
+
 test('Header 组件包含一个input框', () => {
   const inputEl = wrapper.find("[data-test='input']")
-  // expect(inputEl.length).toBe(1)
-  // 或者用: jest-enzyme的方法:
   expect(inputEl).toExist()
 });
 
@@ -26,7 +26,6 @@ test('Header 组件input 框内容, 当用户输入是，会跟随用户的输�
   const inputEl = wrapper.find("[data-test='input']")
   const userInput = 'test content'
   inputEl.simulate('change', { target: { value: userInput} })
-  // 对数据流的测试:
   expect(wrapper.state('value')).toBe(userInput)
 
   // 另一种写法: 渲染完成后,对DOM相关测试:

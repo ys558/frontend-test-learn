@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../style.css'
 
 export default class Header extends Component {
   constructor(props){
@@ -17,14 +18,17 @@ export default class Header extends Component {
   render() {
     const {value} = this.state
     return (
-      <div>
-        {/* data-test='input' 专门为测试单元测试而准备的属性: */}
-        <input 
-          type="text" value={value}
-          data-test='input'
-          onChange={this.changeInputValue}
-          onKeyUp ={this.handleInputKeyup}
-        />
+      <div className='header'>
+        <div className="header-content">
+          TodoList
+          <input
+            className='header-input'
+            type="text" value={value}
+            data-test='input'
+            onChange={this.changeInputValue}
+            onKeyUp ={this.handleInputKeyup}
+          />
+        </div>
       </div>
     )
   }
