@@ -24,7 +24,7 @@ export default class Header extends Component {
           <input
             className='header-input'
             type="text" value={value}
-            data-test='input'
+            data-test='header-input'
             onChange={this.changeInputValue}
             onKeyUp ={this.handleInputKeyup}
           />
