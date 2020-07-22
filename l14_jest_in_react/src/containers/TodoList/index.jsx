@@ -1,23 +1,42 @@
-import React, { Component } from 'react';
-import Header from './components/Header'
-import UndoList from './UndoList';
+import React, { useState } from 'react';
 
-export default class TodoList extends Component {
-  constructor(props){
-    super(props)
-    this.state = { undoList: [] }
-  }
-  addUndoItem = value => this.setState({undoList: [value, ...this.state.undoList]})
-  removeItem = index => {
-    const newList = [...this.state.undoList]
-    newList.splice(index, 1)
-    this.setState({ undoList : newList })
-  }
-  render(){
-    const {undoList} = this.state
-    return <div>
-      <Header addUndoItem={this.addUndoItem} />
-      <UndoList undoList={undoList} removeItem={this.removeItem}/>
-    </div>
-  }
+const TodoList = () => {
+  const [undoItem, addUndoItem] = useState([])
+  return <div>
+    <Input onAddUndoItem={value => addUndoItem([value, ...undoItem]) } />
+    <UndoList undoItem={undoItem} addUndoItem={addUndoItem} />
+  </div>
 }
+
+const Input = ({ onAddUndoItem }) => {
+  const [inputVal, setInputVal] = useState('')
+  const onChange = e => setInputVal(e.target.value)
+  const onKeyUp = e => { 
+    if (e.keyCode === 13 && inputVal !=='' ) {
+      onAddUndoItem(inputVal)
+      setInputVal('')
+    }
+    return 
+  }
+  return <div>
+    <div>Todo List:</div>
+    <input type="text" value={inputVal} onChange={onChange} onKeyUp={onKeyUp} />
+  </div>
+}
+
+const UndoList = ({undoItem, addUndoItem }) => {
+  const delFruit = index => {
+    const temp = [...undoItem]
+    temp.splice(index, 1)
+    addUndoItem(temp)
+  }
+  return <div>
+    {undoItem.map((item, index)=> <div key={index}>
+      <span>{item}{' '}
+        <button onClick={()=> delFruit(index)}>×</button>
+      </span>
+    </div>)}
+  </div>
+}
+
+export default TodoList
