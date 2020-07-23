@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const TodoList = () => {
   const [undoItem, addUndoItem] = useState([])
   return <div>
-    <Input onAddUndoItem={value => addUndoItem([value, ...undoItem]) } />
+    <Input onAddUndoItem={value => addUndoItem([value, ...undoItem]) }  />
     <UndoList undoItem={undoItem} addUndoItem={addUndoItem} />
   </div>
 }
@@ -20,7 +20,7 @@ const Input = ({ onAddUndoItem }) => {
   }
   return <div>
     <div>Todo List:</div>
-    <input type="text" value={inputVal} onChange={onChange} onKeyUp={onKeyUp} />
+    <input type="text" value={inputVal} onChange={onChange} onKeyUp={onKeyUp} dbbtest="inputer" />
   </div>
 }
 
