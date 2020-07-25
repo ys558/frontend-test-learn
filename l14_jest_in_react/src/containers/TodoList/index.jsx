@@ -20,20 +20,20 @@ const Input = ({ onAddUndoItem }) => {
   }
   return <div>
     <div>Todo List:</div>
-    <input type="text" value={inputVal} onChange={onChange} onKeyUp={onKeyUp} dbbtest="inputer" />
+    <input type="text" value={inputVal} onChange={onChange} onKeyUp={onKeyUp} bddtest="inputer" />
   </div>
 }
 
 const UndoList = ({undoItem, addUndoItem }) => {
-  const delFruit = index => {
+  const delItem = index => {
     const temp = [...undoItem]
     temp.splice(index, 1)
     addUndoItem(temp)
   }
   return <div>
     {undoItem.map((item, index)=> <div key={index}>
-      <span>{item}{' '}
-        <button onClick={()=> delFruit(index)}>Ã—</button>
+      <span bdd="list-item">{item}{' '}
+        <button onClick={()=> delItem(index)}>—</button>
       </span>
     </div>)}
   </div>
