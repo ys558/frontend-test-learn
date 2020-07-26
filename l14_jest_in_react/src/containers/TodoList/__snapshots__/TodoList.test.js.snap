@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`1. Input输入框输入内容; 2. 点击回车; 3. 列表中展示用户输入的内容 1`] = `
+<TodoList>
+  <div>
+    <Input
+      onAddUndoItem={[Function]}
+    >
+      <div>
+        <div>
+          Todo List:
+        </div>
+        <input
+          bddtest="inputer"
+          onChange={[Function]}
+          onKeyUp={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+    </Input>
+    <UndoList
+      addUndoItem={[Function]}
+      undoItem={Array []}
+    >
+      <div />
+    </UndoList>
+  </div>
+</TodoList>
+`;

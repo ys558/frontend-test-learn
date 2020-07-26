@@ -29,13 +29,6 @@ test.only('利用Mock测试 runCb', ()=>{
 
   runCb(func)
   runCb(func)
-  console.log(func.mock)
-  // {
-  //   calls: [ [ 'abc' ], [ 'abc' ] ], // 传进来的回调如果有参数，会记录在该数组里
-  //   instances: [ undefined, undefined ],
-  //   invocationCallOrder: [ 1, 2 ], 
-  //   results: [ { type: 'return', value: 456 }, { type: 'return', value: 456 } ]
-  // }
 
   // 调用了两次：
   expect(func.mock.calls.length).toBe(2)
@@ -45,13 +38,6 @@ test.only('利用Mock测试 runCb', ()=>{
 test('测试createObj',()=>{
   const func = jest.fn()
   createObj(func)
-  console.log(func.mock)
-  // {
-  //   calls: [ [] ],
-  //   instances: [ mockConstructor {} ], // 实例化，即this指向,
-  //   invocationCallOrder: [ 1 ],
-  //   results: [ { type: 'return', value: undefined } ]
-  // }
 })
 
 // 无需获取的请求结果的情况下，前端模拟异步测试请求：
